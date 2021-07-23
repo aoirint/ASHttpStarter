@@ -55,7 +55,7 @@ Start-Process -FilePath "ASHttpStarter.exe" -WorkingDirectory "$env:USERPROFILE\
 ```
 
 ## Windows 自動ログオン用設定
-### Microsoft公式ツールによる方法
+### Microsoft公式ツールによる方法（推奨）
 自動ログオン設定用の公式ツール: https://docs.microsoft.com/en-us/sysinternals/downloads/autologon
 
 ### レジストリ編集による方法
