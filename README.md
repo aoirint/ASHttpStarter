@@ -1,7 +1,7 @@
 # ASHttpStarter
 
 ## 動作確認
-### ASHttpStarter 0.1.0.0
+### v0.1.0.0
 - AssistantSeika 20210617/u, 20210723/u
 
 ## コマンドライン引数
