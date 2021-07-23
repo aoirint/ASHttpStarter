@@ -34,6 +34,8 @@ Copyright © 2021 aoirint
 ```
 
 ## 使用例（AIVoiceの場合）
+あらかじめ使用製品一覧にチェックを入れておく。
+
 PowerShellスクリプト`StartAIVoice.ps1`を作成する。
 待機時間は適宜調整する。
 
