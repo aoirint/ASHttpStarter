@@ -82,9 +82,9 @@ Copyright c 2021 aoirint
 あらかじめAssistantSeika上で「使用する製品」の一覧にチェックを入れておいてください。
 本プログラムは使用する製品を自動で選択する機能を持ちませんが、AssistantSeikaは終了後も選択状態を保持するため、自動起動時に好きな選択状態で開始できます。
 
-ダウンロードした本プログラムの配布物を`%USERPROFILE%/apps/ASHttpStarter v0.1.0.0`に展開してください（以下の手順を修正すれば好きなディレクトリでも可）。
+ダウンロードした本プログラムの配布物を`%USERPROFILE%/apps/ASHttpStarter`に展開してください（以下の手順を修正すれば好きなディレクトリでも可）。
 
-以下のようなPowerShellスクリプト`StartVoiceServer.ps1`を`%USERPROFILE%/apps/ASHttpStarter v0.1.0.0`以下に作成してください。
+以下のようなPowerShellスクリプト`StartVoiceServer.ps1`を`%USERPROFILE%/apps/ASHttpStarter`以下に作成してください。
 待機時間`Sleep`の値（秒単位）は、使用環境での各製品の起動にかかる時間に合わせて、適宜調整してください。
 またPowerShellスクリプトは、実行にセキュリティ設定の変更が必要な場合があります。実行できるように設定を確認してください。
 
@@ -97,13 +97,13 @@ Start-Process -FilePath "VOICEVOX.exe" -WorkingDirectory "$env:USERPROFILE\AppDa
 Sleep 15
 Start-Process -FilePath "AssistantSeika.exe" -WorkingDirectory "C:\Program Files\510product\AssistantSeika"
 Sleep 5
-Start-Process -FilePath "ASHttpStarter.exe" -WorkingDirectory "$env:USERPROFILE\apps\ASHttpStarter v0.1.0.0"
+Start-Process -FilePath "ASHttpStarter.exe" -WorkingDirectory "$env:USERPROFILE\apps\ASHttpStarter"
 ```
 
 `shell:startup`をエクスプローラのアドレス欄（Ctrl+L）に入力して開き、以下のようなショートカットを適当な名前で作成してください（右クリック→新規作成→ショートカット）。
 
 ```
-"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -WindowStyle hidden -File "%USERPROFILE%\apps\ASHttpStarter v0.1.0.0\StartVoiceServer.ps1"
+"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -WindowStyle hidden -File "%USERPROFILE%\apps\ASHttpStarter\StartVoiceServer.ps1"
 ```
 
 Windowsを再起動して、動作を確認してください。
