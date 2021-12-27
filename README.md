@@ -55,6 +55,8 @@ Copyright © 2021 aoirint
   --version                       Display version information.
 ```
 
+これらの値は、Windows + Rの「ファイル名を指定して実行」から`inspect.exe`を起動することで確認できます。
+
 ## 使用例
 あらかじめAssistantSeika上で「使用する製品」の一覧にチェックを入れておいてください。
 本プログラムは使用する製品を自動で選択する機能を持ちませんが、AssistantSeikaは終了後も選択状態を保持するため、自動起動時に好きな選択状態で開始できます。
