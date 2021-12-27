@@ -26,9 +26,15 @@ namespace ASHttpStarter
             [Option("ScanningButtonAutomationId", Default = "ButtonScan")]
             public string ScanningButtonAutomationId { get; set; }
 
+            [Option("ScanningTimeoutMillis", Default = 120*1000)]
+            public int ScanningTimeoutMillis { get; set; }
+
             [Option("SpeakerTabName", Default = "話者一覧")]
             public string SpeakerTabName { get; set; }
 
+            [Option("HTTPFuncTabSelectIntervalMillis", Default = 0)]
+            public int HTTPFuncTabSelectIntervalMillis { get; set; }
+            
             [Option("HTTPFuncTabName", Default = "HTTP機能設定")]
             public string HTTPFuncTabName { get; set; }
 
@@ -82,7 +88,6 @@ namespace ASHttpStarter
             // TODO: エラーチェック
             if (opts.Verbose) Console.WriteLine("話者一覧 タブに切り替わるまで待機");
             var speakerTabName = opts.SpeakerTabName;
-            var scanningTimeoutMillis = 10000;
             var currentTabSelection = tabControl.GetCurrentPattern(SelectionPattern.Pattern) as SelectionPattern;
             var startTime = DateTime.Now;
             while (true)
@@ -93,7 +98,7 @@ namespace ASHttpStarter
                 if (selectedTabName == speakerTabName) break;
 
                 var elapsed = DateTime.Now - startTime;
-                if (TimeSpan.FromMilliseconds(scanningTimeoutMillis) <= elapsed)
+                if (TimeSpan.FromMilliseconds(opts.ScanningTimeoutMillis) <= elapsed)
                 {
                     Console.Error.WriteLine("製品スキャンがタイムアウトしました。AssistantSeika側でエラーが発生している可能性があります");
                     Environment.Exit(1);
@@ -101,6 +106,9 @@ namespace ASHttpStarter
 
                 Thread.Sleep(100);
             }
+
+            if (opts.Verbose) Console.WriteLine("製品スキャン完了。待機");
+            Thread.Sleep(opts.HTTPFuncTabSelectIntervalMillis);
 
             if (opts.Verbose) Console.WriteLine("HTTP機能設定 タブに切り替え");
             var httpFuncTabName = opts.HTTPFuncTabName;
