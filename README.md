@@ -1,5 +1,26 @@
 # ASHttpStarter
 
+[AssistantSeika](https://hgotoh.jp/wiki/doku.php/documents/voiceroid/assistantseika/assistantseika-001a) のUIを自動操作して、
+AssistantSeikaのHTTPサーバを自動的に起動するプログラムです。
+
+Windows起動時に、音声合成製品と、それを操作するAssistantSeika、AssistantSeikaのHTTPサーバ機能の3つを自動的に起動する目的に使用することができます。
+
+音声合成製品やAssistantSeika自体を起動する機能は本プログラムに含まれていないため、PowerShellスクリプトなどを併用することを想定しています。
+
+## 処理の流れ（想定）
+
+```
+PowerShellスクリプトの自動実行（スタートアップ時）
+    音声合成製品1の起動
+    音声合成製品2の起動
+    起動待機
+    AssistantSeikaの起動
+    起動待機
+    本プログラムの起動
+        AssistantSeikaの製品スキャン実行
+        AssistantSeikaのHTTPサーバの起動
+```
+
 ## 動作確認
 ### v0.1.0.0
 - AssistantSeika 20210617/u, 20210723/u
