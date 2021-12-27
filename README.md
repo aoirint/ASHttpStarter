@@ -7,6 +7,7 @@ Windows起動時に、音声合成製品と、それを操作するAssistantSeik
 
 音声合成製品やAssistantSeika自体を起動する機能は本プログラムに含まれていないため、PowerShellスクリプトなどを併用することを想定しています。
 
+
 ## 処理の流れ（想定）
 
 ```
@@ -26,7 +27,7 @@ PowerShellスクリプトの自動実行（スタートアップ時）
 - AssistantSeika 20210617/u, 20210723/u
 
 ## コマンドライン引数
-柔軟に仕様変更に対応するため、操作に使用する固有情報はコマンドライン引数から変更できるようにしている。
+柔軟に仕様変更に対応するため、操作に使用する固有情報はコマンドライン引数から変更できるようにしています。
 
 ```
 $ ./ASHttpStarter.exe --help
@@ -54,33 +55,42 @@ Copyright © 2021 aoirint
   --version                       Display version information.
 ```
 
-## 使用例（AIVoiceの場合）
-あらかじめ使用製品一覧にチェックを入れておく。
+## 使用例
+あらかじめAssistantSeika上で「使用する製品」の一覧にチェックを入れておいてください。
+本プログラムは使用する製品を自動で選択する機能を持ちませんが、AssistantSeikaは終了後も選択状態を保持するため、自動起動時に好きな選択状態で開始できます。
 
-PowerShellスクリプト`StartAIVoice.ps1`を作成する。
-待機時間は適宜調整する。
+ダウンロードした本プログラムの配布物を`%USERPROFILE%/apps/ASHttpStarter v0.1.0.0`に展開してください（以下の手順を修正すれば好きなディレクトリでも可）。
+
+PowerShellスクリプト`StartVoiceServer.ps1`を`%USERPROFILE%/apps/ASHttpStarter v0.1.0.0`以下に作成してください。
+待機時間`Sleep`の値（秒単位）は、使用環境での各製品の起動にかかる時間に合わせて、適宜調整してください。
 
 ```ps1
 Start-Process -FilePath "AIVoiceEditor.exe" -WorkingDirectory "C:\Program Files\AI\AIVoice\AIVoiceEditor"
-Sleep 30
+Sleep 25
+Start-Process -FilePath "GynoidTalkEditor.exe" -WorkingDirectory "C:\Program Files (x86)\Gynoid\GynoidTalk"
+Sleep 25
+Start-Process -FilePath "VOICEVOX.exe" -WorkingDirectory "$env:USERPROFILE\AppData\Local\Programs\VOICEVOX"
+Sleep 15
 Start-Process -FilePath "AssistantSeika.exe" -WorkingDirectory "C:\Program Files\510product\AssistantSeika"
 Sleep 5
 Start-Process -FilePath "ASHttpStarter.exe" -WorkingDirectory "$env:USERPROFILE\apps\ASHttpStarter v0.1.0.0"
-
 ```
 
-`shell:startup`にPowerShellで実行するためのショートカットを配置する。
+`shell:startup`をエクスプローラのアドレス欄（Ctrl+L）に入力して開き、以下のようなショートカットを適当な名前で作成してください（右クリック→新規作成→ショートカット）。
 
 ```
-"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -WindowStyle hidden -File "%USERPROFILE%\apps\ASHttpStarter v0.1.0.0\StartAIVoice.ps1"
+"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -WindowStyle hidden -File "%USERPROFILE%\apps\ASHttpStarter v0.1.0.0\StartVoiceServer.ps1"
 ```
+
+Windowsを再起動して、動作を確認してください。
+
 
 ## Windows 自動ログオン用設定
 ### Microsoft公式ツールによる方法（推奨）
 自動ログオン設定用の公式ツール: https://docs.microsoft.com/en-us/sysinternals/downloads/autologon
 
 ### レジストリ編集による方法
-`.reg`ファイルとして保存して実行する。
+以下のコードを`.reg`ファイルとして保存して実行することで、パスワードレスログオンに関するレジストリ設定を変更できます。
 
 #### パスワードレスログオン機能有効化（旧バージョンを使用?）
 ```reg
