@@ -31,31 +31,39 @@ PowerShellスクリプトの自動実行（スタートアップ時）
 
 ```
 $ ./ASHttpStarter.exe --help
-ASHttpStarter 0.1.0.0
-Copyright © 2021 aoirint
+ASHttpStarter 0.2.0.0
+Copyright c 2021 aoirint
 
-  --TargetWindowTitlePrefix       (Default: AssistantSeika)
+  --TargetWindowTitlePrefix            (Default: AssistantSeika)
 
-  --TabControlAutomationId        (Default: tabControl)
+  --TabControlAutomationId             (Default: tabControl)
 
-  --ProductTabName                (Default: 使用製品)
+  --ProductTabName                     (Default: 使用製品)
 
-  --ScanningButtonAutomationId    (Default: ButtonScan)
+  --ScanningButtonAutomationId         (Default: ButtonScan)
 
-  --SpeakerTabName                (Default: 話者一覧)
+  --ScanningTimeoutMillis              (Default: 120000)
 
-  --HTTPFuncTabName               (Default: HTTP機能設定)
+  --SpeakerTabName                     (Default: 話者一覧)
 
-  --HTTPButtonAutomationId        (Default: ButtonHTTP)
+  --HTTPFuncTabSelectIntervalMillis    (Default: 0)
 
-  -v, --Verbose                   (Default: false)
+  --HTTPFuncTabName                    (Default: HTTP機能設定)
 
-  --help                          Display this help screen.
+  --HTTPButtonAutomationId             (Default: ButtonHTTP)
 
-  --version                       Display version information.
+  -v, --Verbose                        (Default: false)
+
+  --help                               Display this help screen.
+
+  --version                            Display version information.
 ```
 
 これらの値は、Windows + Rの「ファイル名を指定して実行」から`inspect.exe`を起動することで確認できます。
+
+たくさんの音声合成製品をスキャンする場合は、`ScanningTimeoutMillis`の値（ミリ秒単位）を大きくしてください。
+製品スキャン完了までの本プログラムの待機時間を延ばすことができます。
+デフォルトでは120秒待機します。
 
 ## 使用例
 あらかじめAssistantSeika上で「使用する製品」の一覧にチェックを入れておいてください。
