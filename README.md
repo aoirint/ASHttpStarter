@@ -61,8 +61,9 @@ Copyright © 2021 aoirint
 
 ダウンロードした本プログラムの配布物を`%USERPROFILE%/apps/ASHttpStarter v0.1.0.0`に展開してください（以下の手順を修正すれば好きなディレクトリでも可）。
 
-PowerShellスクリプト`StartVoiceServer.ps1`を`%USERPROFILE%/apps/ASHttpStarter v0.1.0.0`以下に作成してください。
+以下のようなPowerShellスクリプト`StartVoiceServer.ps1`を`%USERPROFILE%/apps/ASHttpStarter v0.1.0.0`以下に作成してください。
 待機時間`Sleep`の値（秒単位）は、使用環境での各製品の起動にかかる時間に合わせて、適宜調整してください。
+またPowerShellスクリプトは、実行にセキュリティ設定の変更が必要な場合があります。実行できるように設定を確認してください。
 
 ```ps1
 Start-Process -FilePath "AIVoiceEditor.exe" -WorkingDirectory "C:\Program Files\AI\AIVoice\AIVoiceEditor"
