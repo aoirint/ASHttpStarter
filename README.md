@@ -1,5 +1,7 @@
 # ASHttpStarter
 
+- GitHub: <https://github.com/aoirint/ASHttpStarter>
+
 [AssistantSeika](https://hgotoh.jp/wiki/doku.php/documents/voiceroid/assistantseika/assistantseika-001a) のUIを自動操作して、
 AssistantSeikaのHTTPサーバを自動的に起動するプログラムです。
 
