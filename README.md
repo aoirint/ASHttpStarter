@@ -1,5 +1,15 @@
 # ASHttpStarter
 
+## メンテナンスの終了
+
+AssistantSeika 20220118uで製品スキャン実行・HTTPサービス起動用のインタフェース・コマンドが追加されました。
+
+そちらを利用することで本プログラムの機能を代替できるはずなので、本リポジトリはメンテナンス終了を計画しています。
+
+---
+
+## 概要
+
 - GitHub: <https://github.com/aoirint/ASHttpStarter>
 
 [AssistantSeika](https://hgotoh.jp/wiki/doku.php/documents/voiceroid/assistantseika/assistantseika-001a) のUIを自動操作して、
